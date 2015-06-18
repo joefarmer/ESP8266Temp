@@ -14,7 +14,7 @@ int status = WL_IDLE_STATUS;
 
 // ThingSpeak Settings
 char thingSpeakAddress[] = "api.thingspeak.com";
-String writeAPIKey = "2NU5ZNUH9A132RL0";
+String writeAPIKey = "YOURAPIKEY";
 const int updateThingSpeakInterval = 30 * 1000;      // Time interval in milliseconds to update ThingSpeak (number of seconds * 1000 = interval)
 
 // Variable Setup
@@ -26,7 +26,6 @@ void setup() {
   Serial.begin(115200);
   
   WiFi.mode(WIFI_STA);
-  status = WiFi.begin("test", "trytohackthis");
   
   sensors.begin();
   sensorCount = sensors.getDeviceCount();  
@@ -38,10 +37,8 @@ void loop() {
   //{
     if ( status != WL_CONNECTED) { 
       Serial.println("Couldn't get a wifi connection");
-      // don't do anything else:
-      //while(true);
       WiFi.printDiag(Serial);
-      status = WiFi.begin("test", "trytohackthis");
+      status = WiFi.begin("YOURSSID", "YOURPASSWORD");
     } 
     else {
       WiFiClient client;
